@@ -45,6 +45,7 @@ const TextRecognition = () => {
     const { boldLettering } = useSelector((state) => state.boldLettering);
     const { dyslexicFont } = useSelector((state) => state.dyslexicFont);
     const { darkLightMode } = useSelector((state) => state.darkLightMode);
+    const { lineHeight } = useSelector((state) => state.lineHeight);
 
     const handleVoiceRecordingStart = () => {
         resetTranscript();
@@ -87,7 +88,8 @@ const TextRecognition = () => {
                                 style={{
                                     fontSize: `${fontSize}px`,
                                     fontFamily: dyslexicFont,
-                                    color: darkLightMode.text
+                                    color: darkLightMode.text,
+                                    lineHeight: `${lineHeight}px`
                                 }}
                         ></Typography>
                     }
