@@ -67,7 +67,7 @@ const ToggleDrawer = () => {
             <Slider value={lineHeight} onChange={handleLineHeightUpdate} sx={{mt: 1, color: '#ed6c02'}} min={37}/>
             <p className={classes.toggleLabel}>BOLD LETTERING</p>
             <Switch onChange={handleBoldLettering} sx={{mt: 1}} color="warning" />
-            <p className={classes.toggleLabel}>DYSLEXIC FONT</p>
+            <p className={classes.toggleLabel}>DYSLEXIC FRIENDLY FONT</p>
             <Switch onChange={handleDyslexicFont} sx={{mt: 1}} color="warning"/>
             <p className={classes.toggleLabel}>DARK LIGHT MODE</p>
             <Switch onChange={handleDarkLightMode} sx={{mt: 1}} color="warning"/>
