@@ -76,6 +76,7 @@ const TextRecognition = () => {
                 <RecordButtons 
                     recordingStart={handleVoiceRecordingStart}
                     recordingEnd={handleVoiceRecordingEnd}
+                    transcript={transcript}
                 />
                 <div className={classes.transcriptContainer} style={{backgroundColor: darkLightMode.background}}>
                     {
