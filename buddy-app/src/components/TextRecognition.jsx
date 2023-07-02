@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import RecordButtons from "./RecordButtons";
+import communityLogo from '../images/Community_Logo.png';
 
 const useStyles = makeStyles({
     root: {
@@ -17,13 +18,19 @@ const useStyles = makeStyles({
         marginTop: '100px'
     },
     transcriptContainer: {
-        border: '2px solid #AEAEAE',
+        border: '0.5px solid #AEAEAE',
         borderRadius: '8px',
         width: '80%',
         height: '400px',
         marginTop: '40px',
         padding: '7px',
-        overflow: 'scroll'
+        overflow: 'scroll',
+        boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+    },
+    logoContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
@@ -38,7 +45,6 @@ const TextRecognition = () => {
     const { boldLettering } = useSelector((state) => state.boldLettering);
     const { dyslexicFont } = useSelector((state) => state.dyslexicFont);
     const { darkLightMode } = useSelector((state) => state.darkLightMode);
-
 
     const handleVoiceRecordingStart = () => {
         resetTranscript();
@@ -61,7 +67,7 @@ const TextRecognition = () => {
         <div className={classes.root}>
             <div className={classes.micStatusContainer}>
                 <Typography 
-                    style={{fontSize: '50px', color: '#F89D2A'}}
+                    style={{fontSize: '50px', color: '#F89D2A', fontFamily: 'Montserrat, sans-serif'}}
                 >
                     Microphone: {listening ? 'On' : 'Off'}
                 </Typography>
@@ -71,14 +77,20 @@ const TextRecognition = () => {
                     recordingEnd={handleVoiceRecordingEnd}
                 />
                 <div className={classes.transcriptContainer} style={{backgroundColor: darkLightMode.background}}>
-                    <Typography 
-                        dangerouslySetInnerHTML={{__html: transcriptText()}}
-                        style={{
-                            fontSize: `${fontSize}px`,
-                            fontFamily: dyslexicFont,
-                            color: darkLightMode.text
-                        }}
-                    ></Typography>
+                    {
+                        !transcript && darkLightMode.background !== 'black' ? 
+                        <div className={classes.logoContainer}>
+                            <img src={communityLogo} width={'400'} height={'400'} alt={'class companion logo'}/>
+                        </div>
+                        : <Typography 
+                                dangerouslySetInnerHTML={{__html: transcriptText()}}
+                                style={{
+                                    fontSize: `${fontSize}px`,
+                                    fontFamily: dyslexicFont,
+                                    color: darkLightMode.text
+                                }}
+                        ></Typography>
+                    }
                 </div>
         </div>
     );
